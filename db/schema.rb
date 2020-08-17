@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_132703) do
+ActiveRecord::Schema.define(version: 2020_08_17_141655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_132703) do
     t.bigint "renter_id", null: false
     t.date "begin_date"
     t.date "end_date"
-    t.string "status"
+    t.string "status", default: "pending"
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
