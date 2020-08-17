@@ -13,11 +13,13 @@ User.delete_all
 puts '[1/4] Finished!'
 
 puts '[2/4] Creating 10 fake users...'
+
 10.times do
+  first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  user = User.new(first_name: Faker::Name.first_name,
+  user = User.new(first_name: first_name,
                   last_name: last_name,
-                  email: "#{last_name.downcase}@exemple.com",
+                  email: "#{first_name.downcase}.#{last_name.downcase}@exemple.com",
                   password: 'password')
   user.save!
 end
@@ -37,14 +39,14 @@ puts '[3/4] Finished!'
 puts '[4/4] Creating 20 fake orders...'
 20.times do
   begin_date = Faker::Date.between(from: 100.days.ago, to: 20.days.ago)
-  # days = rand(1..19)
-  end_date = begin_date + rand(1..19)
+  days = rand(1..19)
+  end_date = begin_date + days
   order = Order.new(rocket: Rocket.all.sample,
                     renter: User.all.sample,
                     begin_date: begin_date,
                     end_date: end_date,
                     total_price: rand(1..100000))
-  # order.total_price = days * order.rocket.daily_price
+  order.total_price = days * order.rocket.daily_price
   order.save!
 end
 puts '[4/4] Finished!'
