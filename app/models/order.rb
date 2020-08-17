@@ -10,5 +10,4 @@ class Order < ApplicationRecord
 
   validates :total_price, numericality: { only_integer: true }
 
-
 end
