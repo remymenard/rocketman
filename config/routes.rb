@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :orders, only: [:index]
   resources :rockets, only: [:index, :show] do
-    resources :orders, only: [:index, :new, :create]
+    resources :orders, only: [:new, :create]
   end
   resources :orders, only: [:index]
 
