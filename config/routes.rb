@@ -5,16 +5,15 @@ Rails.application.routes.draw do
   resources :rockets, only: [:index, :show] do
     resources :orders, only: [:new, :create]
   end
-  resources :orders, only: [:index]
 
-  namespace :owners do
+  namespace :owner do
     resources :orders, only: [:index] do
       member do
         patch 'accept'
         patch 'decline'
       end
     end
-    resources :rockets, only: [:new, :create, :index, :destroy, :edit, :update]
+    resources :rockets, only: [:new, :create, :index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
