@@ -25,7 +25,7 @@ puts '[2/4] Finished!'
 
 puts '[3/4] Creating 25 fake rockets...'
 25.times do
-  rocket = Rocket.new(owner_id: rand(1..10),
+  rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: Faker::Space.galaxy,
                       location: Faker::Space.planet,
@@ -39,8 +39,8 @@ puts '[4/4] Creating 20 fake orders...'
   begin_date = Faker::Date.between(from: 100.days.ago, to: 20.days.ago)
   # days = rand(1..19)
   end_date = begin_date + rand(1..19)
-  order = Order.new(rocket_id: rand(1..25),
-                    renter_id: rand(1..10),
+  order = Order.new(rocket: Rocket.all.sample,
+                    renter: User.all.sample,
                     begin_date: begin_date,
                     end_date: end_date,
                     total_price: rand(1..100000))
