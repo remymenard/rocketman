@@ -1,7 +1,7 @@
 .map {
     height: 350px;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .margin-top-negative {
@@ -11,6 +11,5 @@
 .rocket-show-card {
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 3px;
   border-radius: 10px;
 }
