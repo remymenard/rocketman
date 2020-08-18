@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
+require "csv"
 
 puts "[1/4] Cleaning database..."
 Order.delete_all
@@ -26,20 +27,24 @@ puts "[2/4] Creating 10 fake users..."
 end
 puts "[2/4] Finished!"
 
-puts "[3/4] Creating 25 fake rockets..."
-25.times do |index|
+puts "[3/4] Creating fake rockets from the csv..."
+
+CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
-                      name: Faker::Space.galaxy,
+                      name: row[1],
                       location: Faker::Space.planet,
                       autonomy: rand(1..1000000))
-  rocket.photo.attach(io: image, filename: "rocket#{index}.jpg", content_type: "image/jpg")
+  image = URI.open(row[0])
+  rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
 end
-rocket = Rocket.last
-image = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/440px-Soyuz_TMA-9_launch.jpg")
-rocket.photo.attach(io: image, filename: "rocket.jpg", content_type: "image/jpg")
-puts rocket.photo.attached?
+
+# rocket = Rocket.last
+# image = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/440px-Soyuz_TMA-9_launch.jpg")
+# arr_of_rows = CSV.read(image_tag "rockets/.png", **options)
+# rocket.photo.attach(io: image, filename: "rocket.jpg", content_type: "image/jpg")
+# puts rocket.photo.attached?
 
 puts "[3/4] Finished!"
 
