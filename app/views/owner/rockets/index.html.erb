@@ -1,0 +1,14 @@
+<h1>My rockets</h1>
+
+<div class='card p-3 m-3'>
+  <% @rockets.each do |rocket| %>
+    <p><%= rocket.name %></p>
+    <p><%= rocket.daily_price %></p>
+    <p><%= rocket.location %></p>
+    <p><%= rocket.autonomy %></p>
+  <% end %>
+
+  <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+  </a>
+</div>
