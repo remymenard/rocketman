@@ -62,14 +62,11 @@ svg {
   animation: flicker-circles-rotate 150s infinite linear;
 }
 .flicker-circles circle {
-  r: 50;
   fill: url(#flickerGradient);
 }
 .sun {
 height: 100%;
 width: 100%;
-y: 0;
-x: 0;
 fill: url(#solarGradient);
 }
 @keyframes flicker-circles-rotate {
