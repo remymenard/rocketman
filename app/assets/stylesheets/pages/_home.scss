@@ -2,3 +2,23 @@
 .form-inline {
   text-align: center;
 }
+
+#neon-title {
+  font-size: 80px;
+  color: #fff;
+  animation: glow 1s ease-in-out infinite alternate;
+  font-family: 'Orbitron', sans-serif;
+  // text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #663B98, 0 0 16px #663B98, 0 0 20px #663B98, 0 0 24px #663B98, 0 0 28px #663B98;
+  }
+  to {
+    text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 24px #663B98, 0 0 32px #663B98, 0 0 40px #663B98, 0 0 48px #663B98, 0 0 56px #663B98;
+  }
+}
+
+
+
