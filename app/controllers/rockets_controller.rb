@@ -6,6 +6,7 @@ class RocketsController < ApplicationController
   end
 
   def index
+    @rockets = Rocket.all
   end
 
   def create
