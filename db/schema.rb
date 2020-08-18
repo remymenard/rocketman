@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_124406) do
     t.bigint "renter_id", null: false
     t.date "begin_date"
     t.date "end_date"
-    t.string "status", default: "pending"
+    t.string "status", default: "Pending"
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

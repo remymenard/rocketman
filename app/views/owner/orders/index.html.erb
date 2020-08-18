@@ -6,6 +6,24 @@
     <p><%= order.renter.first_name %> <%= order.renter.last_name %></p>
     <p>From <%= order.begin_date %> to <%= order.end_date %></p>
     <p><%= order.total_price %>$</p>
-    <p>Status: <%= order.status %></p>
+
+    <% if order.status == 'Pending' %>
+      <p>Status: <%= order.status %></p>
+        <%= link_to accept_owner_order_path(order), method: 'patch' do%>
+          <button type="button" class="btn btn-success w-100">Accept</button>
+        <% end %>
+        <%= link_to decline_owner_order_path(order), method: 'patch' do%>
+          <button type="button" class="btn btn-danger w-100">Decline</button>
+        <% end %>
+    <% else %>
+      <p>
+        Status: <%= order.status %>
+        <%= link_to cancel_owner_order_path(order), method: 'patch' do%>
+          <button type="button" class="btn btn-light">Cancel</button>
+        <% end %>
+      </p>
+
+    <% end %>
+
   </div>
 <% end %>
