@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css?family=Syncopate:400,700);
+
+body {
+  font-family: 'Syncopate';
+  margin: 0px;
+}
+
+.title {
+
+  text-transform: uppercase;
+  font-size: 5vw;
+  font-weight: bold;
+  text-shadow: -3px 0 hsla(200, 100%, 50%, 0.25), 0 4px hsla(200, 10%, 50%, 0.5), 4px 0 hsla(200, 10%, 50%, 0.25), 0 -3px hsla(240, 30%, 50%, 0.5);
+
+  color: hsla(0, 0%, 0%, 0.9);
+  width: 100%;
+  text-align: center;
+  margin-top: calc(50vh - 5vw);
+}
+
+.sub-title {
+  width: 100%;
+  text-align: center;
+  color: hsla(0, 0%, 80%, 0.5);
+  font-size: 18px
+}
+
+svg.star-background {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+
+  min-width: 100%;
+  height: 100%;
+}
+
+svg {
+  background: hsl(0, 0%, 0%);
+}
+.stars {
+  transform-origin: center center;
+}
+.stars-sm-no-rotate {
+  fill: hsl(60, 50%, 50%);
+  transform: scale(0.8) rotate(200deg) translate(-350 -50);
+}
+.stars-sm {
+  fill: hsl(30, 30%, 50%);
+  animation: stars-sm-rotate 400s infinite linear;
+}
+.stars-md {
+  fill: hsl(60, 80%, 80%);
+  animation: stars-md-rotate 350s infinite linear;
+}
+.stars-lg {
+  fill: hsl(60, 30%, 70%);
+  animation: stars-lg-rotate 300s infinite linear;
+}
+.flicker-circles {
+  transform-origin: center center;
+  animation: flicker-circles-rotate 150s infinite linear;
+}
+.flicker-circles circle {
+  r: 50;
+  fill: url(#flickerGradient);
+}
+.sun {
+height: 100%;
+width: 100%;
+y: 0;
+x: 0;
+fill: url(#solarGradient);
+}
+@keyframes flicker-circles-rotate {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes stars-sm-rotate {
+  from {
+      transform: rotate(-0deg) translate(-75px, 225px);
+  }
+  to {
+      transform: rotate(-360deg) translate(-75px, 225px);
+  }
+}
+
+@keyframes stars-md-rotate {
+  from {
+      transform: scale(1.25) rotate(-45deg) translate(300px, -50px);
+  }
+  to {
+      transform: scale(1.25) rotate(-405deg) translate(300px, -50px);
+  }
+}
+
+@keyframes stars-lg-rotate {
+  from {
+      transform: scale(2.1) rotate(-90deg) translate(30px, 50px);
+  }
+  to {
+      transform: scale(2.1) rotate(-450deg) translate(30px, 50px);
+  }
+}
