@@ -16,7 +16,12 @@ puts "[1/4] Finished!"
 
 puts "[2/4] Creating 10 fake users..."
 
-10.times do
+user = User.create!(first_name: "Jean Michel",
+  last_name: "Dupont",
+  email: "test@exemple.com",
+  password: "password")
+
+9.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   user = User.new(first_name: first_name,
