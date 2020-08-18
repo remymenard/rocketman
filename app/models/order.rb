@@ -9,5 +9,4 @@ class Order < ApplicationRecord
   validates :end_date, presence: true, allow_blank: false
 
   validates :total_price, numericality: { only_integer: true }
-
 end
