@@ -3,6 +3,7 @@ class RocketsController < ApplicationController
   end
 
   def show
+    @rocket = Rocket.find(params[:id])
   end
 
   def index

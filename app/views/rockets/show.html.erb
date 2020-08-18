@@ -1,1 +1,39 @@
-<%= render 'shared/background' %>
+
+
+<div class="map" style="background-image: url('https://source.unsplash.com/random')"></div>
+  <div class= "container margin-top-negative">
+    <div class ="row">
+      <div class="col-8">
+        <div class="rocket-show-card " style= "background-color: #eeeeee">
+          <h1><strong><%= @rocket.name %></strong></h1>
+          <p>rocket available on <%= @rocket.location %></p>
+        </div>
+
+        <div class="rocket-show-card " style= "background-color: #eeeeee">
+          <h3>A bit more about this flat...</h3>
+          <p>autonomy: <%= @rocket.autonomy %> année lumière</p>
+          <p>price: <%= @rocket.daily_price %> <i class="fas fa-euro-sign"></i></p>
+        </div>
+        <div style= "color: purple"><i class="far fa-hand-point-left"></i> <%= link_to 'Back', rockets_path%></div>
+      </div>
+
+      <div class="col-4">
+        <div class="rocket-show-card p-3" style= "background-color: #eeeeee">
+          <h5>Book this rocket!</h5>
+          <form action="">
+            <div class="input-group">
+              <span class="input-date" id="basic-date">From:</span>
+              <input type="text" class="form-control" placeholder="12/10/2017">
+            </div>
+            <div class="input-group mt-2">
+              <span class="input-date" id="basic-date">To:</span>
+              <input type="text" class="form-control" placeholder="18/10/2017">
+            </div>
+            <input type="submit" value="Book" class="btn-purple book mt-3 p-2" style="width: 100%">
+          </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
