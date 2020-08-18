@@ -12,7 +12,7 @@
         <div class="rocket-show-card " style= "background-color: #eeeeee">
           <h3>A bit more about this flat...</h3>
           <p>autonomy: <%= @rocket.autonomy %> année lumière</p>
-          <p>price: <%= @rocket.daily_price %> <i class="fas fa-euro-sign"></i></p>
+          <p>price: <%= @rocket.daily_price %> <i class="fas fa-dollar-sign"></i></p>
         </div>
         <div style= "color: purple"><i class="far fa-hand-point-left"></i> <%= link_to 'Back', rockets_path%></div>
       </div>
@@ -20,20 +20,16 @@
       <div class="col-4">
         <div class="rocket-show-card p-3" style= "background-color: #eeeeee">
           <h5>Book this rocket!</h5>
-          <form action="">
-            <div class="input-group">
-              <span class="input-date" id="basic-date">From:</span>
-              <input type="text" class="form-control" placeholder="12/10/2017">
-            </div>
-            <div class="input-group mt-2">
-              <span class="input-date" id="basic-date">To:</span>
-              <input type="text" class="form-control" placeholder="18/10/2017">
-            </div>
-            <input type="submit" value="Book" class="btn-purple book mt-3 p-2" style="width: 100%">
-          </form>
+          <%= simple_form_for [@rocket, @order] do |f| %>
+            <%= f.input :begin_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}  %>
+            <br>
+            <p>Total price: <span class="total_price"><%=  %> <i class="fas fa-dollar-sign"></i></span></p>
+            <%= f.submit "book", class: "btn-purple book mt-3 p-2" %>
+          <% end %>
+
       </div>
-
-
     </div>
   </div>
 </div>
+

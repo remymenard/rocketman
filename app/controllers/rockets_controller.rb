@@ -4,6 +4,9 @@ class RocketsController < ApplicationController
 
   def show
     @rocket = Rocket.find(params[:id])
+
+    @order = Order.new
+
   end
 
   def index
