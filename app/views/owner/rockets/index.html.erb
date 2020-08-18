@@ -2,13 +2,19 @@
 
 <% @rockets.each do |rocket| %>
   <div class='card p-3 m-3'>
-    <p><%= rocket.name %></p>
-    <p><%= rocket.daily_price %></p>
-    <p><%= rocket.location %></p>
-    <p><%= rocket.autonomy %></p>
-
-    <a data-dismiss="alert" aria-label="Close">
-        <i class="fas fa-times"></i>
-    </a>
+    <div>
+      <p><%= rocket.name %></p>
+      <p><%= rocket.daily_price %></p>
+      <p><%= rocket.location %></p>
+      <p><%= rocket.autonomy %></p>
+    </div>
+    <div>
+      <%= link_to "#" do %>
+        <button type="button" class="btn btn-light">Edit</button>
+      <% end %>
+      <%= link_to "#" do %>
+        <button type="button" class="btn btn-danger">Delete</button>
+      <% end %>
+    </div>
   </div>
 <% end %>

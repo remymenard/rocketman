@@ -1,6 +1,6 @@
 class Owner::OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.order(created_at: :asc)
+    @orders = current_user.owner_orders.order(created_at: :asc)
   end
 
   def decline
