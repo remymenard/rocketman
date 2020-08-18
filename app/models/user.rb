@@ -3,9 +3,6 @@ class User < ApplicationRecord
   has_many :orders, foreign_key: :renter_id
   has_many :owner_orders, through: :rockets, source: :orders
 
-  validates :rockets, presence: true
-  validates :orders, presence: true
-
   validates :first_name, presence: true, allow_blank: false
   validates :last_name, presence: true, allow_blank: false
 
