@@ -1,0 +1,11 @@
+<h1>My Rockets Requests</h1>
+
+<% @orders.each do |order| %>
+  <div class='card p-3 m-3'>
+    <p><%= order.rocket.name %></p>
+    <p><%= order.renter.first_name %> <%= order.renter.last_name %></p>
+    <p>From <%= order.begin_date %> to <%= order.end_date %></p>
+    <p><%= order.total_price %>$</p>
+    <p>Status: <%= order.status %></p>
+  </div>
+<% end %>

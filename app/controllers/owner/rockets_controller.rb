@@ -1,4 +1,9 @@
 class Owner::RocketsController < ApplicationController
+
+  def index
+    @rockets = current_user.rockets
+  end
+
   def new
     @rocket = Rocket.new
   end
