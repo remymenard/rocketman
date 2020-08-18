@@ -5,14 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
-puts '[1/4] Cleaning database...'
+puts "[1/4] Cleaning database..."
 Order.delete_all
 Rocket.delete_all
 User.delete_all
-puts '[1/4] Finished!'
+puts "[1/4] Finished!"
 
-puts '[2/4] Creating 10 fake users...'
+puts "[2/4] Creating 10 fake users..."
 
 10.times do
   first_name = Faker::Name.first_name
@@ -20,23 +21,29 @@ puts '[2/4] Creating 10 fake users...'
   user = User.new(first_name: first_name,
                   last_name: last_name,
                   email: "#{first_name.downcase}.#{last_name.downcase}@exemple.com",
-                  password: 'password')
+                  password: "password")
   user.save!
 end
-puts '[2/4] Finished!'
+puts "[2/4] Finished!"
 
-puts '[3/4] Creating 25 fake rockets...'
-25.times do
+puts "[3/4] Creating 25 fake rockets..."
+25.times do |index|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: Faker::Space.galaxy,
                       location: Faker::Space.planet,
                       autonomy: rand(1..1000000))
+  rocket.photo.attach(io: image, filename: "rocket#{index}.jpg", content_type: "image/jpg")
   rocket.save!
 end
-puts '[3/4] Finished!'
+rocket = Rocket.last
+image = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/440px-Soyuz_TMA-9_launch.jpg")
+rocket.photo.attach(io: image, filename: "rocket.jpg", content_type: "image/jpg")
+puts rocket.photo.attached?
 
-puts '[4/4] Creating 20 fake orders...'
+puts "[3/4] Finished!"
+
+puts "[4/4] Creating 20 fake orders..."
 20.times do
   begin_date = Faker::Date.between(from: 100.days.ago, to: 20.days.ago)
   days = rand(1..19)
@@ -49,7 +56,4 @@ puts '[4/4] Creating 20 fake orders...'
   order.total_price = days * order.rocket.daily_price
   order.save!
 end
-puts '[4/4] Finished!'
-
-
-
+puts "[4/4] Finished!"
