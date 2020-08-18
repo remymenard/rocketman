@@ -1,0 +1,19 @@
+<h1>My Requests</h1>
+
+<% @orders.each do |order| %>
+  <div class='card p-3 m-3'>
+    <div>
+      <p><%= order.rocket.name %></p>
+      <p><%= order.rocket.owner.first_name %> <%= order.rocket.owner.last_name %></p>
+      <p>From <%= order.begin_date %> to <%= order.end_date %></p>
+      <p><%= order.total_price %>$</p>
+      <p>Status: <%= order.status %></p>
+    </div>
+    <div>
+      <%= link_to "#" do %>
+        <button type="button" class="btn btn-light">Cancel</button>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
