@@ -33,13 +33,14 @@ end
 puts "[2/4] Finished!"
 
 puts "[3/4] Creating fake rockets from the csv..."
-
+cities = CSV.parse(File.read(Rails.root.join("lib/cities.csv")))
 CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: row[1],
                       location: Faker::Space.planet,
-                      autonomy: rand(1..1000000))
+                      autonomy: rand(1..1000000),
+                      address: cities.sample)
   image = URI.open(row[0])
   rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
