@@ -1,21 +1,54 @@
-<h1 class = "m-3">My Requests</h1>
+<div class='p-3'>
 
-<% @orders.each do |order| %>
-
-  <div class='card-product mt-3 m-3'>
-    <%= cl_image_tag order.rocket.photo.key, height: 300, width: 300, crop: :fill %>
-    <div class= "mt-3 ml-3">
-      <h2><%= order.rocket.name %></h2>
-      <p><%= order.rocket.owner.first_name %> <%= order.rocket.owner.last_name %></p>
-      <p>From <%= order.begin_date %> to <%= order.end_date %></p>
-      <p><%= order.total_price %>$</p>
-      <p>Status: <%= order.status %></p>
-    </div>
-    <div>
-      <%= link_to "#" do %>
-        <button type="button" class="btn btn-light">Cancel</button>
-      <% end %>
-    </div>
+  <div class='mb-5 mx-auto' style='width: 70%;'>
+    <h1>My Requests</h1>
   </div>
 
-<% end %>
+  <% @orders.each do |order| %>
+    <div class='card mx-auto my-3 container order-card' style='height: 200px; width: 70%;'>
+      <div class='row h-100'>
+
+        <div class="card-category col-4" style="height: 100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path order.rocket.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <h2><%= order.rocket.name %></h2>
+        </div>
+
+        <div class='col-5 p-3 d-flex flex-column justify-content-center' style='height: 200px;'>
+          <div class='ml-3 d-flex flex-column justify-content-center'>
+
+            <div class='container'>
+              <div class="row">
+                <div class='col p-0'>
+                  <p><span class='legend'>from</span><br/><%= order.begin_date.strftime("%d of %B, %Y") %></p>
+                </div>
+                <div class='col p-0'>
+                  <p><span class='legend'>to</span><br/><%= order.end_date.strftime("%d of %B, %Y") %></p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p class='name'><%= order.rocket.owner.first_name %> <%= order.rocket.owner.last_name %></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class='col-3 p-3 d-flex flex-column justify-content-center align-items-center'>
+          <p>$<%= order.total_price %><br/><span class='legend'>total price</span></p>
+
+
+          <div class='d-flex align-items-center'>
+            <p><span class='legend'>status</span><br/><%= order.status %></p>
+            <%= link_to '#' do%>
+              <button type="button" class="btn btn-light ml-3">Cancel</button>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
