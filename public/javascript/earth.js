@@ -63,7 +63,7 @@ function placeAllMarkers(cards, wwd) {
   // are identical except the image scale. You could instead vary the color, image, or other property
   // to control the highlight representation.
   var highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-  highlightAttributes.imageScale = 1.2;
+  highlightAttributes.imageScale = 1.6;
 
   // Create the placemark with the attributes defined above.
 
