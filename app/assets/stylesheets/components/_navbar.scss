@@ -1,12 +1,24 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.navbar-home {
   background: rgba(250, 250, 250, .1);
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-allpages {
+  background: black;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon {
+  justify-content: space-between;
+
+
+  .navbar-red {
+    background: red
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .navbar-brand img {
+    width: 40px;
+  }
 }
