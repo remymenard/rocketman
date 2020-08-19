@@ -4,16 +4,13 @@
   <div class="row">
     <% @rockets.each do |rocket| %>
     <div class="col-12 col-md-6 col-xl-4">
-      <div class="rocket-card mt-3" style= "background-color: rgb(248, 249, 250)">
-        <div class="rocket-card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')"></div>
-        <div class="card-description text-left pl-4">
+      <div class="rocket-card mt-3 mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
+        <div class="card-description text-left pl-4 d-flex flex-column mt-auto mb-3">
           <div class="rocket-card-title pt-3">
-            <h4><%= rocket.name %></h4>
+            <h4 style = "color: white"><%= rocket.name %></h4>
           </div>
-          <p> rocket available on <%= rocket.location %></p>
+          <p style = "color: white"><%= rocket.location %></p>
           <div class="flex pb-3">
-            <%= rocket.daily_price %> <i class="fas fa-euro-sign"></i>
-            <%= rocket.autonomy %> <span>al</span>
           </div>
         </div>
         <%= link_to 'More info', rocket_path(rocket), class: "card-link"%>

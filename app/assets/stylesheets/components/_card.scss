@@ -1,17 +1,19 @@
-.rocket-card-image {
-    height: 180px;
-    background-position: center;
-    background-size: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
 
 .rocket-card {
   position: relative;
   width: 100%;
   border-radius: 3px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  border-radius: 10px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: white;
 }
 
 .title-index {
