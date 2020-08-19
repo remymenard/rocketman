@@ -3,11 +3,13 @@ class Rocket < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many :orders
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :photo, presence: true
 
   validates :owner, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  validates :address, presence: true
 
   validates :daily_price, numericality: { only_integer: true }
 
