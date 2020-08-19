@@ -1,9 +1,11 @@
-<h1>My Requests</h1>
+<h1 class = "m-3">My Requests</h1>
 
 <% @orders.each do |order| %>
-  <div class='card p-3 m-3'>
-    <div>
-      <p><%= order.rocket.name %></p>
+
+  <div class='card-product mt-3 m-3'>
+    <%= cl_image_tag order.rocket.photo.key, height: 300, width: 300, crop: :fill %>
+    <div class= "mt-3 ml-3">
+      <h2><%= order.rocket.name %></h2>
       <p><%= order.rocket.owner.first_name %> <%= order.rocket.owner.last_name %></p>
       <p>From <%= order.begin_date %> to <%= order.end_date %></p>
       <p><%= order.total_price %>$</p>

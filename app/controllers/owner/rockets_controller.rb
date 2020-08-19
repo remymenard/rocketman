@@ -1,5 +1,4 @@
 class Owner::RocketsController < ApplicationController
-
   def index
     @rockets = current_user.rockets
   end
@@ -18,6 +17,6 @@ class Owner::RocketsController < ApplicationController
   private
 
   def rocket_params
-    params.require(:rocket).permit(:name, :daily_price, :autonomy, :location)
+    params.require(:rocket).permit(:name, :daily_price, :autonomy, :location, :photo)
   end
 end

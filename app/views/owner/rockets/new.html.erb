@@ -1,17 +1,19 @@
-<h1>Add a new rocket</h1>
+<div class="container">
+  <h1 class= "pt-3 pb-3">Add a new rocket</h1>
+  <div class='card p-3'>
+    <%= simple_form_for @rocket, url: owner_rockets_path do |f| %>
+      <%= f.error_notification %>
 
-<div class='card p-3'>
-  <%= simple_form_for @rocket, url: owner_rockets_path do |f| %>
-    <%= f.error_notification %>
+      <%= f.input :name %>
 
-    <%= f.input :name %>
+      <%= f.input :daily_price %>
 
-    <%= f.input :daily_price %>
+      <%= f.input :autonomy %>
 
-    <%= f.input :autonomy %>
+      <%= f.input :location %>
 
-    <%= f.input :location %>
+      <%= f.button :submit, class: 'btn btn-light', style: 'width: 100%' %>
+    <% end %>
+  </div>
 
-    <%= f.button :submit, class: 'btn btn-light' %>
-  <% end %>
 </div>

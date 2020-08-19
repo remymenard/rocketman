@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders
+    @rocket = Rocket.new
   end
 
   def show
