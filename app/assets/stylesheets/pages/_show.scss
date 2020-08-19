@@ -8,8 +8,20 @@
   margin-top: -75px;
 }
 
-.rocket-show-card {
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+// .rocket-show-card {
+//   padding: 20px;
+//   margin-bottom: 20px;
+//   // border-radius: 10px;
+// }
+
+.show-picture {
+  background-size: contain;
+  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')
 }
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+
