@@ -10,8 +10,12 @@ class Owner::RocketsController < ApplicationController
   def create
     @rocket = Rocket.new(rocket_params)
     @rocket.owner = current_user
-    @rocket.save
-    redirect_to rocket_path(@rocket)
+    if @rocket.valid?
+      @rocket.save
+      redirect_to rocket_path(@rocket)
+    else
+      render :new
+    end
   end
 
   private

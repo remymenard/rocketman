@@ -3,6 +3,8 @@ class Rocket < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many :orders
 
+  validates :photo, presence: true
+
   validates :owner, presence: true
 
   validates :daily_price, numericality: { only_integer: true }
