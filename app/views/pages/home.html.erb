@@ -1,8 +1,7 @@
 <%= render 'shared/background' do %>
-<div class="justify-content-center">
-<div class="banner justify-content-center">
-  <div class="container align-items-center">
-    <h1 class = "mb-3" id='neon-title'>RocketMan</h1>
+<div class="banner">
+  <div class="container">
+    <h1 class = "mb-3 text-align-center" id='neon-title'>RocketMan</h1>
     <%# <p>Take off now</p> %>
     <div class="row">
       <div class="col-sm-12" id="formContainer">
@@ -14,8 +13,8 @@
               boolean: :inline_boolean
             }  do |f| %>
             <%= f.input :adress, input_html: {value: "Destination", class: "mb-2 mr-sm-2"} %>
-            <%= f.input :begin_date, input_html: {value: "From", class: "mb-2 mr-sm-2"} %>
-            <%= f.input :end_date, input_html: {value: "To", class: "mb-2 mr-sm-2 pt-2"} %>
+            <%= f.input :begin_date, as: :string, required: false, input_html: {value: "From", class: "datepicker mb-2 mr-sm-2"} %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {value: "To", class: "datepicker mb-2 mr-sm-2"}  %>
             <%= button_tag( :class => "btn btn-primary btn-lg mb-2") do %>
               TAKE OFF <i class="fas fa-space-shuttle"></i>
             <% end %>
@@ -27,6 +26,4 @@
   </div>
 </div>
 
-</div>
 <% end %>
-<i class="fas fa-space-shuttle"></i>
