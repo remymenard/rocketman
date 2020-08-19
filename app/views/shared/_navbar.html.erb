@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <% if action_name == "home" %> navbar-home <% else %> navbar-allpages <% end %>">
   <%= link_to homepage_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
