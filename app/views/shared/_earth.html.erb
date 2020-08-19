@@ -22,6 +22,27 @@
     let location = new WorldWind.Location(47.317520, -2.188230);
     // Go to the posiion
     wwd.goTo(location);
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    let locationUSA = new WorldWind.Location(47.317520, -2.188230);
+    let locationRUSSIA = new WorldWind.Location(0.0, 0.0);
+    let card = document.querySelector(".rocket-card");
+    card.addEventListener("mouseenter", hover())
+    function hover() {
+      wwd.goTo(generateRandomLoc())
+    }
+
+    function generateRandomLoc() {
+      number = getRandomInt(2);
+      if(number === 1) {
+        return locationUSA;
+      } else {
+        return locationRUSSIA;
+      }
+    }
     // var placemarkLayer = new WorldWind.RenderableLayer("Placemarks");
     // var placemark = new WorldWind.Placemark(new WorldWind.Position(47.317520, -2.188230, 10));
 
