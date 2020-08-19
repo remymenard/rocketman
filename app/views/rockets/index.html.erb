@@ -1,11 +1,10 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-<%= render 'shared/background' %>
+<%= render 'shared/background' do %>
 <div class="container">
   <h1 class="title-index pb-3 pt-3" style="color: white;"><strong>Our Rockets</strong></h1>
   <div class="row">
     <div class="col-5" style="max-height: 75vh; overflow: scroll;">
       <% @rockets.each do |rocket| %>
-          <div class="rocket-card mt-3 mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
+          <div class="rocket-card mt-3 mb-3" data-longitude="<%= rocket.longitude %>" data-latitude="<%= rocket.latitude %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
             <div class="card-description text-left pl-4 d-flex flex-column mt-auto mb-3">
               <div class="rocket-card-title pt-3">
                 <h4 style = "color: white"><%= rocket.name %></h4>
@@ -24,3 +23,4 @@
     </div>
   </div>
 </div>
+<% end %>

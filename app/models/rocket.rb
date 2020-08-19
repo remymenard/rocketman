@@ -6,6 +6,8 @@ class Rocket < ApplicationRecord
   validates :photo, presence: true
 
   validates :owner, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 
   validates :daily_price, numericality: { only_integer: true }
 
