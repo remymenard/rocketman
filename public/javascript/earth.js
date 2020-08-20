@@ -76,7 +76,7 @@ function placeAllMarkers(cards, wwd) {
     // Draw placemark at altitude defined above, relative to the terrain.
     placemark.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
     // Assign highlight attributes for the placemark.
-    placemark.highlightAttributes = highlightAttributes;
+    // placemark.highlightAttributes = highlightAttributes;
 
     // Create the renderable layer for placemarks.
     var placemarkLayer = new WorldWind.RenderableLayer("Custom Placemark");
