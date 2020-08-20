@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1 class= "pt-3 pb-3">Add a new rocket</h1>
   <div class='card p-3'>
@@ -16,7 +17,8 @@
       <%= f.input :travellers_number %>
       <%= f.input :surface %>
 
-      <%= f.input :address %>
+      <%= f.input :address, wrapper_html: { id: 'addressJs'} %>
+      <p id="addressText">qssq</p>
 
       <%= f.input :photo, as: :file %>
 
@@ -25,3 +27,5 @@
   </div>
 
 </div>
+
+<%= javascript_pack_tag 'verifyLocation' %>
