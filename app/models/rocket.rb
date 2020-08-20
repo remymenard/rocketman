@@ -1,6 +1,5 @@
 require 'opencage/geocoder'
 
-
 class Rocket < ApplicationRecord
 CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
 
