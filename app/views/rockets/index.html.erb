@@ -5,12 +5,12 @@
     <div class="col-5" style="max-height: 75vh; overflow: scroll;">
       <% @rockets.each do |rocket| %>
           <div class="rocket-card mt-3 mb-3" data-longitude="<%= rocket.longitude %>" data-latitude="<%= rocket.latitude %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
-            <div class="card-description text-left pl-4 d-flex flex-column mt-auto mb-3">
-              <div class="rocket-card-title pt-3">
-                <h4 style = "color: white"><%= rocket.name %></h4>
+            <div class="card-category card-description d-flex flex-column mt-auto mb-3">
+              <div class="rocket-card-title  text-align-center pt-3">
+                <h1 style = "color: white"><%= rocket.name %></h1>
               </div>
-              <p style = "color: white"><%= rocket.location %></p>
-              <div class="flex pb-3">
+              <div class="flex text-align-center pb-3">
+                <h6 style = "color: white"><%= rocket.address %></h6>
               </div>
             </div>
             <%= link_to 'More info', rocket_path(rocket), class: "card-link"%>
