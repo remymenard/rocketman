@@ -8,7 +8,7 @@ class Rocket < ApplicationRecord
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
   after_validation :get_continent, on: [ :create, :update ]
-
+  validates :photo, presence: true
 
 
   validates :owner, presence: true
