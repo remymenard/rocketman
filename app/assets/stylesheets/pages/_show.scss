@@ -20,4 +20,17 @@
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')
 }
 
+.equipment {
+ font-size: 120%;
+ width: 30%;
+ margin: 10px;
+}
 
+.subtitle-text {
+  font-size: 110%;
+}
+
+.title-text {
+  font-size: 300%;
+  font-weight: lighter;
+}

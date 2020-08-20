@@ -2,10 +2,10 @@
 
   <div class="col-12 col-md-6">
     <div class='row' style='height: 65%;'>
-      <div class='' style="width:100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')">
-        <div class='mx-5 text-white'>
-          <h1><strong><%= @rocket.name %></strong></h1>
-          <p>Launch form Cap Canaveral, Florida</p>
+      <div class='d-flex align-items-end' style="width:100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')">
+        <div class='mx-5 my-3 text-white'>
+          <h1 class='title-text'><strong><%= @rocket.name %></strong></h1>
+          <p class='subtitle-text'>Launch form <%= @rocket.city %>, <%= @rocket.country %> <%= @rocket.flag %></p>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
   <div class="col-12 col-md-6">
 
     <div class="card p-3 m-3">
-      <h5>Book this rocket!</h5>
+      <h4>Book this rocket!</h4>
       <%= simple_form_for [@rocket, @order] do |f| %>
           <%= f.input :begin_date, as: :string, input_html: {class: "datepicker"} %>
           <%= f.input :end_date, as: :string, input_html: {class: "datepicker"}  %>
@@ -27,16 +27,37 @@
     </div>
 
     <div class="card p-3 m-3">
-      <h3>Technical details</h3>
-      <p>6 bunks · 2 rooms · 2 bathrooms · 1 fitness room</p>
-      <p>autonomy: <%= @rocket.autonomy %> année lumière</p>
-      <p>3000 tonnes · height: 30m</p>
-      <p>price: <%= @rocket.daily_price %> $</p>
-    </div>
 
-    <div class="card p-3 m-3">
-      <h3>Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h4>A unique rocket!</h4>
+      <div class='mt-2'>
+        <p>
+          <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
+          <%= @rocket.beds_number %> <%= @rocket.beds_number == 1 ? 'bed' : 'beds' %> ·
+          <%= @rocket.rooms_number %> <%= @rocket.rooms_number == 1 ? 'room' : 'rooms' %> ·
+          <%= @rocket.bathrooms_number %> <%= @rocket.bathrooms_number == 1 ? 'bathroom' : 'bathrooms' %>
+        </p>
+      </div>
+
+      <div class="d-flex flex-wrap py-4 m-3 border-bottom border-top">
+
+        <div class='equipment'><i class="fas fa-wifi mr-3"></i> Wifi </br></div>
+        <div class='equipment'><i class="far fa-heart mr-3"></i> Fitness room </br></div>
+        <div class='equipment'><i class="fas fa-film mr-3"></i> Cinema </br></div>
+        <div class='equipment'><i class="fas fa-hot-tub mr-3"></i> Jacuzzi </br></div>
+        <div class='equipment'><i class="fas fa-spa mr-3"></i> Spa </br></div>
+        <div class='equipment'><i class="fas fa-bowling-ball mr-3"></i> Booling</div>
+        <!-- <div class='equipment'><i class="fas fa-golf-ball mr-3"></i> Golf court</div>
+        <div class='equipment'><i class="fas fa-binoculars mr-3"></i> Panoramic view </br></div>
+        <div class='equipment'><i class="fas fa-horse-head mr-3"></i></i> Horse riding</div>
+        <div class='equipment'><i class="fas fa-cocktail mr-3"></i> Cocktail's bar</div>
+        <div class='equipment'><i class="fas fa-skiing mr-3"></i> Skiing</div>
+        <div class='equipment'><i class="fas fa-utensils mr-3"></i> Head cook</div> -->
+
+      </div>
+
+      <div class='p-3'>
+        <p>Nous avons eu un véritable coup de cœur pour cet appartement vue sur l'île de Nantes et son éléphant. Idéal pour visiter Nantes au calme en regardant passer les bateaux, vous êtes les bienvenus. Ancien appartement Nantais rénové en pierre.</p>
+      </div>
     </div>
 
 </div>
