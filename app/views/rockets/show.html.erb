@@ -20,10 +20,17 @@
     <div class="card p-3 m-3">
       <h4>Book this rocket!</h4>
       <%= simple_form_for [@rocket, @order] do |f| %>
-          <%= f.input :begin_date, as: :string, input_html: {class: "datepicker"} %>
-          <%= f.input :end_date, as: :string, input_html: {class: "datepicker"}  %>
-          <%= f.submit "book", class: "btn btn-info w-100" %>
-        <% end %>
+        <%= f.input :begin_date, as: :string, input_html: {class: "begin_date datepicker"} %>
+        <%= f.input :end_date, as: :string, input_html: {class: "end_date datepicker"}  %>
+        <div class= "d-flex justify-content-between">
+          <p id = "calcul"></p>
+          <p class = "text-right" id="price"></p>
+        </div>
+        <%= f.submit "book", class: "btn btn-info w-100" %>
+
+
+
+      <% end %>
     </div>
 
     <div class="card p-3 m-3">
@@ -61,3 +68,6 @@
     </div>
 
 </div>
+
+<%= javascript_pack_tag 'calculate_booking_price' %>
+
