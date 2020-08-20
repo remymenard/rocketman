@@ -7,7 +7,7 @@ class Rocket < ApplicationRecord
 
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
-  after_validation :get_continent, on: [ :create, :update ]
+  validate :manage_location
   validates :photo, presence: true
 
 
@@ -20,13 +20,16 @@ class Rocket < ApplicationRecord
   validates :autonomy, presence: true, allow_blank: false
 
   private
-  def get_continent
+  def manage_location
     geocoder = OpenCage::Geocoder.new(api_key: ENV['OPENCAGE_KEY'])
     result = geocoder.geocode(self.address)
     unless result.empty?
       self.continent = result.first.components["continent"]
       self.latitude = result.first.lat
       self.longitude = result.first.lng
+      raise
+    else
+      errors.add(:address, "Not a valid address")
     end
   end
 end
