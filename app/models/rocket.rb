@@ -12,6 +12,11 @@ CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania
 
   validate :manage_location
   validates :photo, presence: true
+  validates :rooms_number, presence: true, numericality: { only_integer: true }
+  validates :beds_number, presence: true, numericality: { only_integer: true }
+  validates :bathrooms_number, presence: true, numericality: { only_integer: true }
+  validates :travellers_number, presence: true, numericality: { only_integer: true }
+  validates :surface, presence: true, numericality: { only_integer: true }
 
   validates :owner, presence: true
 
@@ -27,6 +32,8 @@ CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania
     result = geocoder.geocode(self.address)
     unless result.empty?
       self.continent = result.first.components["continent"]
+      self.country = result.first.components["country"]
+      self.city = result.first.components["city"]
       self.latitude = result.first.lat
       self.longitude = result.first.lng
     else

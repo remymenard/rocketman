@@ -39,7 +39,12 @@ CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
                       daily_price: rand(100..999),
                       name: row[1],
                       autonomy: rand(1..1000000),
-                      address: cities.sample.first)
+                      address: cities.sample.first,
+                      rooms_number: rand(1..10),
+                      beds_number: rand(1..10),
+                      bathrooms_number: rand(1..10),
+                      travellers_number: rand(1..10),
+                      surface: rand(40..200))
   image = URI.open(row[0])
   rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
