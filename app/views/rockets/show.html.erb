@@ -35,14 +35,21 @@
 
     <div class="card p-3 m-3">
 
-      <h4>A unique rocket!</h4>
-      <div class='mt-2'>
-        <p>
-          <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
-          <%= @rocket.beds_number %> <%= @rocket.beds_number == 1 ? 'bed' : 'beds' %> ·
-          <%= @rocket.rooms_number %> <%= @rocket.rooms_number == 1 ? 'room' : 'rooms' %> ·
-          <%= @rocket.bathrooms_number %> <%= @rocket.bathrooms_number == 1 ? 'bathroom' : 'bathrooms' %>
-        </p>
+      <div class='d-flex justify-content-between align-items-center m-3'>
+        <div class='m-0 p-0'>
+          <h4>A unique rocket!</h4>
+          <div>
+            <p class='m-0'>
+              <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
+              <%= @rocket.beds_number %> <%= @rocket.beds_number == 1 ? 'bed' : 'beds' %> ·
+              <%= @rocket.rooms_number %> <%= @rocket.rooms_number == 1 ? 'room' : 'rooms' %> ·
+              <%= @rocket.bathrooms_number %> <%= @rocket.bathrooms_number == 1 ? 'bathroom' : 'bathrooms' %>
+            </p>
+          </div>
+        </div>
+        <div>
+          <%= image_tag "pierre.jpg", class: "avatar mr-3" %>
+        </div>
       </div>
 
       <div class="d-flex flex-wrap py-4 m-3 border-bottom border-top">
@@ -63,7 +70,7 @@
       </div>
 
       <div class='p-3'>
-        <p>Nous avons eu un véritable coup de cœur pour cet appartement vue sur l'île de Nantes et son éléphant. Idéal pour visiter Nantes au calme en regardant passer les bateaux, vous êtes les bienvenus. Ancien appartement Nantais rénové en pierre.</p>
+        <p class='m-0'>Nous avons eu un véritable coup de cœur pour cet appartement vue sur l'île de Nantes et son éléphant. Idéal pour visiter Nantes au calme en regardant passer les bateaux, vous êtes les bienvenus. Ancien appartement Nantais rénové en pierre.</p>
       </div>
     </div>
 
