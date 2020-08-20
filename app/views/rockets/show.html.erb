@@ -22,7 +22,7 @@
         <%= f.input :begin_date, as: :string, input_html: {class: "begin_date datepicker"} %>
         <%= f.input :end_date, as: :string, input_html: {class: "end_date datepicker"}  %>
         <div class= "d-flex justify-content-between">
-          <p id = "calcul" data-dailyPrice="<%= @rocket.daily_price %>"></p>
+          <p id = "calcul" data-dailyPrice="<%= @rocket.daily_price %>">Daily price: $<%= @rocket.daily_price %></p>
           <p class = "text-right" id="price"></p>
         </div>
         <%= f.submit "I book this amazing rocket!", class: "btn btn-info w-100" %>
@@ -59,12 +59,12 @@
         <div class='equipment'><i class="fas fa-hot-tub mr-3"></i> Jacuzzi </br></div>
         <div class='equipment'><i class="fas fa-spa mr-3"></i> Spa </br></div>
         <div class='equipment'><i class="fas fa-bowling-ball mr-3"></i> Booling</div>
-        <!-- <div class='equipment'><i class="fas fa-golf-ball mr-3"></i> Golf court</div>
-        <div class='equipment'><i class="fas fa-binoculars mr-3"></i> Panoramic view </br></div>
+        <div class='equipment'><i class="fas fa-golf-ball mr-3"></i> Golf court</div>
+        <div class='equipment'><i class="fas fa-binoculars mr-3"></i> Observatory </br></div>
         <div class='equipment'><i class="fas fa-horse-head mr-3"></i></i> Horse riding</div>
         <div class='equipment'><i class="fas fa-cocktail mr-3"></i> Cocktail's bar</div>
         <div class='equipment'><i class="fas fa-skiing mr-3"></i> Skiing</div>
-        <div class='equipment'><i class="fas fa-utensils mr-3"></i> Head cook</div> -->
+        <div class='equipment'><i class="fas fa-utensils mr-3"></i> Head cook</div>
 
       </div>
 

@@ -1,6 +1,23 @@
 <%= render 'shared/background' do %>
 <div class="container">
-  <h1 class="title-index pb-3 pt-3" style="color: white;"><strong>Our Rockets</strong></h1>
+  <div class='row d-flex justify-content-between my-3'>
+    <h1 class = "mb-3 text-align-center" id='neon-title'>RocketMan</h1>
+    <div class='m-auto'>
+      <%= simple_form_for :search, url: rockets_path, method: "GET",
+        wrapper: :inline_form,
+        html: { class: "form-inline" },
+        wrapper_mappings: {
+          boolean: :inline_boolean
+        }  do |f| %>
+        <%= f.input :continent, collection: Rocket::CONTINENT, prompt: @params[:continent], input_html: {class: "mb-2 mr-sm-2"} %>
+        <%= f.input :begin_date, as: :string, required: false, input_html: {value: @params[:begin_date], class: "datepicker mb-2 mr-sm-2"} %>
+        <%= f.input :end_date, as: :string, required: false, input_html: {value: @params[:end_date], class: "datepicker mb-2 mr-sm-2"}  %>
+        <%= button_tag( :class => "btn btn-primary mb-2") do %>
+          TAKE OFF <i class="fas fa-space-shuttle"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-5" style="max-height: 75vh; overflow: scroll;">
       <% @rockets.each do |rocket| %>
@@ -10,7 +27,7 @@
                 <h1 style = "color: white"><%= rocket.name %></h1>
               </div>
               <div class="flex text-align-center pb-3">
-                <h6 style = "color: white"><%= rocket.address %></h6>
+                <h6 style = "color: white"><%= rocket.city %>, <%= rocket.country %></h6>
               </div>
             </div>
             <%= link_to 'More info', rocket_path(rocket), target: :_blank, class: "card-link"%>
@@ -18,9 +35,10 @@
 
       <% end %>
     </div>
-    <div class="col-7">
-      <%= render 'shared/earth' %>
+    <div class="col-7" style="position: sticky; right: 100px;">
+        <%= render 'shared/earth' %>
     </div>
+
   </div>
 </div>
 <% end %>

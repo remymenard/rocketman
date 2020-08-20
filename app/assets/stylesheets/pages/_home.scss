@@ -2,9 +2,11 @@
 .form-inline {
   text-align: center;
 }
+#big-text-title {
+  font-size: 10vw;
+}
 
 #neon-title {
-  font-size: 10vw;
   color: #fff;
   animation: glow 1s ease-in-out infinite alternate;
   font-family: 'Orbitron', sans-serif;
