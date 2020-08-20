@@ -51,6 +51,7 @@ CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket.save!
 end
 
+
 # rocket = Rocket.last
 # image = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/440px-Soyuz_TMA-9_launch.jpg")
 # arr_of_rows = CSV.read(image_tag "rockets/.png", **options)
