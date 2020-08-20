@@ -23,7 +23,7 @@
         <%= f.input :begin_date, as: :string, input_html: {class: "begin_date datepicker"} %>
         <%= f.input :end_date, as: :string, input_html: {class: "end_date datepicker"}  %>
         <div class= "d-flex justify-content-between">
-          <p id = "calcul"></p>
+          <p id = "calcul" data-dailyPrice="<%= @rocket.daily_price %>"></p>
           <p class = "text-right" id="price"></p>
         </div>
         <%= f.submit "book", class: "btn btn-info w-100" %>
