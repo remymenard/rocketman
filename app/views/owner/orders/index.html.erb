@@ -33,8 +33,9 @@
           </div>
         </div>
 
-        <div class='col-3 p-3 d-flex flex-column justify-content-center align-items-center'>
-          <p>$<%= order.total_price %><br/><span class='legend'>total price</span></p>
+        <div class='col-3 p-2 d-flex align-items-center'>
+        <div class='p-3 d-flex flex-column justify-content-center align-items-center'>
+          <p class='mb-4' style='font-size: 200%; font-weight: 800px;'>$<%= order.total_price %></p>
 
           <% if order.status == 'Pending' %>
             <div class='d-flex'>
@@ -42,17 +43,22 @@
                 <button type="button" class="btn btn-success mr-3" style='width: 90px;'>Accept</button>
               <% end %>
               <%= link_to decline_owner_order_path(order), method: 'patch' do%>
-                <button type="button" class="btn btn-danger" style='width: 90px;'>Decline</button>
+                <button type="button" class="btn btn-outline-danger" style='width: 90px;'>Decline</button>
               <% end %>
             </div>
           <% else %>
             <div class='d-flex align-items-center'>
-              <p><span class='legend'>status</span><br/><%= order.status %></p>
+              <% if order.status == 'Accepted'%>
+                <p class='m-0 text-success'><%= order.status %></p>
+              <% else %>
+                <p class='m-0 text-danger'><%= order.status %></p>
+              <% end %>
               <%= link_to cancel_owner_order_path(order), method: 'patch' do%>
-                <button type="button" class="btn btn-light ml-3">Cancel</button>
+                <button type="button" class="btn btn-outline-dark ml-3" style='width: 90px;'>Cancel</button>
               <% end %>
             </div>
           <% end %>
+        </div>
         </div>
 
       </div>
