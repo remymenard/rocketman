@@ -29,6 +29,7 @@ CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania
       self.continent = result.first.components["continent"]
       self.latitude = result.first.lat
       self.longitude = result.first.lng
+
     else
       errors.add(:address, "Not a valid address")
     end
