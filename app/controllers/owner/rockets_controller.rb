@@ -10,8 +10,7 @@ class Owner::RocketsController < ApplicationController
   def create
     @rocket = Rocket.new(rocket_params)
     @rocket.owner = current_user
-    if @rocket.valid?
-      @rocket.save
+    if @rocket.save!
       redirect_to rocket_path(@rocket)
     else
       render :new
@@ -21,6 +20,6 @@ class Owner::RocketsController < ApplicationController
   private
 
   def rocket_params
-    params.require(:rocket).permit(:name, :daily_price, :autonomy, :location, :photo)
+    params.require(:rocket).permit(:name, :daily_price, :autonomy, :photo, :address)
   end
 end
