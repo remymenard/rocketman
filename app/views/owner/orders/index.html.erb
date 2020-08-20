@@ -24,12 +24,16 @@
                   <p><span class='legend'>to</span><br/><%= order.end_date.strftime("%d of %B, %Y") %></p>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <p class='name'><%= order.renter.first_name %> <%= order.renter.last_name %></p>
+              <div class='row d-flex align-items-center'>
+                <div>
+                  <%= image_tag "pierre.jpg", class: "avatar1 mr-3" %>
+                </div>
+                <div>
+                  <p class='name m-0'><%= order.renter.first_name %> <%= order.renter.last_name %></p>
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
 
