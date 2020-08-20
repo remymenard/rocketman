@@ -45,10 +45,12 @@ CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
                       bathrooms_number: rand(1..10),
                       travellers_number: rand(1..10),
                       surface: rand(40..200))
+  sleep 0.5
   image = URI.open(row[0])
   rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
 end
+
 
 # rocket = Rocket.last
 # image = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/440px-Soyuz_TMA-9_launch.jpg")
