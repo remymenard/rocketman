@@ -9,8 +9,11 @@ class RocketsController < ApplicationController
   # end
 
   def index
-    if !search_params[:continent].empty?
-      @rockets_init = Rocket.where(continent: search_params[:continent])
+
+    @params = search_params
+
+    if !@params[:continent].empty?
+      @rockets_init = Rocket.where(continent: @params[:continent])
     else
       @rockets_init = Rocket.all
     end
@@ -20,8 +23,8 @@ class RocketsController < ApplicationController
       @rockets << rocket_init
     end
 
-    search_begin_date = search_params[:begin_date]
-    search_end_date = search_params[:end_date]
+    search_begin_date = @params[:begin_date]
+    search_end_date = @params[:end_date]
 
     if (search_begin_date.empty? || search_end_date.empty? || search_begin_date == 'From' || search_end_date == 'To')
       search_begin_date = nil
