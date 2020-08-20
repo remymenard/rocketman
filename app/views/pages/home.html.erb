@@ -12,7 +12,7 @@
             wrapper_mappings: {
               boolean: :inline_boolean
             }  do |f| %>
-            <%= f.input :adress, input_html: {value: "Destination", class: "mb-2 mr-sm-2"} %>
+            <%= f.input :continent, collection: Rocket::CONTINENT, prompt: "Continent", input_html: {class: "mb-2 mr-sm-2"} %>
             <%= f.input :begin_date, as: :string, required: false, input_html: {value: "From", class: "datepicker mb-2 mr-sm-2"} %>
             <%= f.input :end_date, as: :string, required: false, input_html: {value: "To", class: "datepicker mb-2 mr-sm-2"}  %>
             <%= button_tag( :class => "btn btn-primary btn-lg mb-2") do %>
@@ -27,3 +27,6 @@
 </div>
 
 <% end %>
+
+
+
