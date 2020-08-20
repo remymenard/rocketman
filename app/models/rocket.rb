@@ -1,6 +1,9 @@
 require 'opencage/geocoder'
 
+
 class Rocket < ApplicationRecord
+CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
+
   has_one_attached :photo
   belongs_to :owner, class_name: 'User'
   has_many :orders
@@ -8,8 +11,6 @@ class Rocket < ApplicationRecord
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
   after_validation :get_continent, on: [ :create, :update ]
-
-
 
   validates :owner, presence: true
 
