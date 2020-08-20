@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home', as: 'homepage'
-  resources :orders, only: [:index]
+  resources :orders, only: [:index] do
+      member do
+        patch 'cancel'
+      end
+    end
   resources :rockets, only: [:index, :show] do
     resources :orders, only: [:new, :create]
   end

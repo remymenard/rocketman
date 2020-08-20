@@ -5,6 +5,14 @@ class OrdersController < ApplicationController
     @rocket = Rocket.new
   end
 
+  def cancel
+    @rocket = Rocket.new
+    @order = Order.find(params[:id])
+    @order.destroy
+
+    redirect_to orders_path
+  end
+
   def create
     @rocket = Rocket.find(params[:rocket_id])
     begin_date = Date.iso8601(order_params[:begin_date])
