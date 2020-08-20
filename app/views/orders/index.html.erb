@@ -39,9 +39,9 @@
 
           <div class='d-flex align-items-center'>
             <p><span class='legend'>status</span><br/><%= order.status %></p>
-            <%= link_to '#' do%>
+            <%= link_to cancel_order_path(order), method: 'patch' do%>
               <button type="button" class="btn btn-light ml-3">Cancel</button>
-            <% end %>
+            <%end%>
           </div>
 
         </div>
