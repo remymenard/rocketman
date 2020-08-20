@@ -38,7 +38,6 @@ CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: row[1],
-                      location: Faker::Space.planet,
                       autonomy: rand(1..1000000),
                       address: cities.sample)
   image = URI.open(row[0])
