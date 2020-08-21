@@ -28,7 +28,7 @@ import "../plugins/flatpickr"
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
-import 'fullcalendar/main.css'
+// import 'fullcalendar/main.css'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
