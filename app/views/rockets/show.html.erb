@@ -49,6 +49,7 @@
           <p>
 
           <div class="stars">
+          <% if @reviews.size > 0 %>
             <% average = 0
             total = @reviews.each { |review| average += review.rating }
             average = average / @reviews.size %>
@@ -58,6 +59,15 @@
             <% other_stars_number = 5 - average.to_i %>
             <% other_stars_number.times do  %>
               <span class="fa fa-star"></span>
+            <% end %>
+            <% else %>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            <p>No review for this rocket</p>
+
             <% end %>
           </div>
           <a href="#">Add a review</a>
