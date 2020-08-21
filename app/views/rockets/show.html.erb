@@ -1,6 +1,8 @@
-<div class ="row visible" style='height: calc(100vh - 65px);'>
+<%= render 'shared/background' %>
 
-  <div class="col-12 col-md-6">
+<div class ="row visible">
+
+  <div class="col-12 col-md-6" style='height: calc(100vh - 65px); position: sticky; top: 65px;'>
     <div class='row' style='height: 65%;'>
       <div class='d-flex align-items-end' style="width:100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')">
         <div class='mx-5 my-3 text-white'>
@@ -79,18 +81,18 @@
 
       <div class="d-flex flex-wrap py-4 m-3 border-bottom border-top">
 
-        <div class='equipment'><i class="fas fa-wifi mr-3"></i> Wifi </br></div>
-        <div class='equipment'><i class="far fa-heart mr-3"></i> Fitness room </br></div>
-        <div class='equipment'><i class="fas fa-film mr-3"></i> Cinema </br></div>
-        <div class='equipment'><i class="fas fa-hot-tub mr-3"></i> Jacuzzi </br></div>
-        <div class='equipment'><i class="fas fa-spa mr-3"></i> Spa </br></div>
-        <div class='equipment'><i class="fas fa-bowling-ball mr-3"></i> Booling</div>
-        <div class='equipment'><i class="fas fa-golf-ball mr-3"></i> Golf court</div>
-        <div class='equipment'><i class="fas fa-binoculars mr-3"></i> Observatory </br></div>
-        <div class='equipment'><i class="fas fa-horse-head mr-3"></i></i> Horse riding</div>
-        <div class='equipment'><i class="fas fa-cocktail mr-3"></i> Cocktail's bar</div>
-        <div class='equipment'><i class="fas fa-skiing mr-3"></i> Skiing</div>
-        <div class='equipment'><i class="fas fa-utensils mr-3"></i> Head cook</div>
+        <%if @rocket.equipments.include?("Wifi")%><div class='equipment'><i class="fas fa-wifi mr-3"></i> Wifi </br></div><%end%>
+        <%if @rocket.equipments.include?("Fitness room")%><div class='equipment'><i class="far fa-heart mr-3"></i> Fitness room </br></div><%end%>
+        <%if @rocket.equipments.include?("Cinema")%><div class='equipment'><i class="fas fa-film mr-3"></i> Cinema </br></div><%end%>
+        <%if @rocket.equipments.include?("Jacuzzi")%><div class='equipment'><i class="fas fa-hot-tub mr-3"></i> Jacuzzi </br></div><%end%>
+        <%if @rocket.equipments.include?("Spa")%><div class='equipment'><i class="fas fa-spa mr-3"></i> Spa </br></div><%end%>
+        <%if @rocket.equipments.include?("Booling")%><div class='equipment'><i class="fas fa-bowling-ball mr-3"></i> Booling</div><%end%>
+        <%if @rocket.equipments.include?("Golf court")%><div class='equipment'><i class="fas fa-golf-ball mr-3"></i> Golf court</div><%end%>
+        <%if @rocket.equipments.include?("Observatory")%><div class='equipment'><i class="fas fa-binoculars mr-3"></i> Observatory </br></div><%end%>
+        <%if @rocket.equipments.include?("Horse riding")%><div class='equipment'><i class="fas fa-horse-head mr-3"></i></i> Horse riding</div><%end%>
+        <%if @rocket.equipments.include?("Cocktail's bar")%><div class='equipment'><i class="fas fa-cocktail mr-3"></i> Cocktail's bar</div><%end%>
+        <%if @rocket.equipments.include?("Skiing")%><div class='equipment'><i class="fas fa-skiing mr-3"></i> Skiing</div><%end%>
+        <%if @rocket.equipments.include?("Head cook")%><div class='equipment'><i class="fas fa-utensils mr-3"></i> Head cook</div><%end%>
 
       </div>
 
