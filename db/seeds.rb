@@ -44,25 +44,29 @@ puts "[3/5] Creating fake rockets from the csv..."
 
 equipment = ['Wifi', 'Fitness room', 'Cinema', 'Jacuzzi', 'Spa', 'Booling', 'Golf court', 'Observatory', 'Horse riding', "Cocktail's bar", 'Skiing', 'Head cook']
 
-i = 1
+i = 0
+total = 0
 cities = CSV.parse(File.read(Rails.root.join("lib/cities.csv")))
+rockets = CSV.parse(File.read(Rails.root.join("lib/rockets.csv")))
 
-CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
+59.times do
+  i = 0 if i == 10
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: Faker::Space.galaxy,
-                      address: cities[i].first,
+                      address: cities[total].first,
                       rooms_number: rand(1..10),
                       beds_number: rand(1..10),
                       bathrooms_number: rand(1..10),
                       travellers_number: rand(1..10),
                       equipments: equipment.sample(rand(4..6)))
   # sleep 0.5
-  image = URI.open(row[0])
-  rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
+  image = URI.open(rockets[i].first)
+  rocket.photo.attach(io: image, filename: "rocket#{total}.jpg", content_type: "image/jpg")
   rocket.save!
   i += 1
-  puts "#{i}/56"
+  total += 1
+  puts "#{total}/56"
 end
 
 
@@ -80,7 +84,7 @@ Rocket.all.each do |rocket|
   rand(3..6).times do
     review = Review.new(user: User.all.sample,
                         rocket: rocket,
-                        rating: rand(2..5),
+                        rating: rand(1..5),
                         description: Faker::Restaurant.review)
     review.save!
   end

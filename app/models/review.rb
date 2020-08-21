@@ -5,7 +5,7 @@ class Review < ApplicationRecord
   validates :rocket, presence: true
   validates :user, presence: true
 
-  validates :description, length: { maximum: 255 }
+  validates :description, presence: true
 
-  validates :rating, :inclusion => { in: 1..2 }
+  validates :rating, :inclusion => { in: 1..5 }
 end
