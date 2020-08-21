@@ -25,7 +25,7 @@ require("turbolinks").start()
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr"
-import "../plugins/calendar"
+import { loadCalendar } from "../plugins/calendar"
 
 
 // Internal imports, e.g:
@@ -34,4 +34,5 @@ import "../plugins/calendar"
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  loadCalendar();
 });
