@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   namespace :owner do
     resources :orders, only: [:index] do
+      collection do
+        get 'list'
+      end
       member do
         patch 'accept'
         patch 'decline'

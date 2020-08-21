@@ -1,30 +1,27 @@
+<div id='calendar' class="margin-calendar"></div>
 <div class='p-3'>
-
   <div class='mb-5 mx-auto' style='width: 70%;'>
     <h1>My Rockets Requests</h1>
   </div>
-
   <% @orders.each do |order| %>
     <div class='card mx-auto my-3 container order-card' style='height: 200px; width: 70%;'>
       <div class='row h-100'>
-
         <div class="card-category col-4" style="height: 100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path order.rocket.photo.key, height: 300, width: 400, crop: :fill %>')">
           <h2><%= order.rocket.name %></h2>
         </div>
-
         <div class='col-5 p-3 d-flex flex-column justify-content-center' style='height: 200px;'>
           <div class='ml-3 d-flex flex-column justify-content-center'>
-
             <div class='container'>
               <div class="row">
                 <div class='col p-0'>
-                  <p><span class='legend'>from</span><br/><%= order.begin_date.strftime("%d of %B, %Y") %></p>
+                  <p><span class='legend'>from</span><br/>
+                    <%= order.begin_date.strftime("%d of %B, %Y") %></p>
                 </div>
                 <div class='col p-0'>
-                  <p><span class='legend'>to</span><br/><%= order.end_date.strftime("%d of %B, %Y") %></p>
+                  <p><span class='legend'>to</span><br/>
+                    <%= order.end_date.strftime("%d of %B, %Y") %></p>
                 </div>
               </div>
-
               <div class='row d-flex align-items-center'>
                 <div>
                   <%= image_tag "pierre.jpg", class: "avatar1 mr-3" %>
@@ -36,38 +33,33 @@
             </div>
           </div>
         </div>
-
         <div class='col-3 p-2 d-flex align-items-center'>
-        <div class='p-3 d-flex flex-column justify-content-center align-items-center'>
-          <p class='mb-4' style='font-size: 200%; font-weight: 800px;'>$<%= order.total_price %></p>
-
-          <% if order.status == 'Pending' %>
-            <div class='d-flex'>
-              <%= link_to accept_owner_order_path(order), method: 'patch' do%>
-                <button type="button" class="btn btn-success mr-3" style='width: 90px;'>Accept</button>
-              <% end %>
-              <%= link_to decline_owner_order_path(order), method: 'patch' do%>
-                <button type="button" class="btn btn-outline-danger" style='width: 90px;'>Decline</button>
-              <% end %>
-            </div>
-          <% else %>
-            <div class='d-flex align-items-center'>
-              <% if order.status == 'Accepted'%>
-                <p class='m-0 text-success'><%= order.status %></p>
-              <% else %>
-                <p class='m-0 text-danger'><%= order.status %></p>
-              <% end %>
-              <%= link_to cancel_owner_order_path(order), method: 'patch' do%>
-                <button type="button" class="btn btn-outline-dark ml-3" style='width: 90px;'>Cancel</button>
-              <% end %>
-            </div>
-          <% end %>
+          <div class='p-3 d-flex flex-column justify-content-center align-items-center'>
+            <p class='mb-4' style='font-size: 200%; font-weight: 800px;'>$<%= order.total_price %></p>
+            <% if order.status == 'Pending' %>
+              <div class='d-flex'>
+                <%= link_to accept_owner_order_path(order), method: 'patch' do%>
+                  <button type="button" class="btn btn-success mr-3" style='width: 90px;'>Accept</button>
+                <% end %>
+                <%= link_to decline_owner_order_path(order), method: 'patch' do%>
+                  <button type="button" class="btn btn-outline-danger" style='width: 90px;'>Decline</button>
+                <% end %>
+              </div>
+            <% else %>
+              <div class='d-flex align-items-center'>
+                <% if order.status == 'Accepted'%>
+                  <p class='m-0 text-success'><%= order.status %></p>
+                <% else %>
+                  <p class='m-0 text-danger'><%= order.status %></p>
+                <% end %>
+                <%= link_to cancel_owner_order_path(order), method: 'patch' do%>
+                  <button type="button" class="btn btn-outline-dark ml-3" style='width: 90px;'>Cancel</button>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        </div>
-
       </div>
     </div>
-
   <% end %>
-
 </div>

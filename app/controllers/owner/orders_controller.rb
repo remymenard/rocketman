@@ -7,6 +7,19 @@ class Owner::OrdersController < ApplicationController
     update_status('Declined')
   end
 
+  def list
+    @orders = current_user.owner_orders.order(created_at: :asc)
+    @formatted_orders = @orders.map{ |order|
+      {
+        "title" => "#{User.find(order.renter_id).first_name} #{User.find(order.renter_id).last_name}",
+        "start" => order.begin_date,
+        "end" => order.end_date,
+
+      }
+    }
+    render :json => @formatted_orders
+  end
+
   def accept
     update_status('Accepted')
   end
