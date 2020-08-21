@@ -33,7 +33,7 @@
                     </div>
                     <div class='row d-flex align-items-center'>
                       <div>
-                        <%= image_tag "pierre.jpg", class: "avatar1 mr-3", style: 'height: 55px; width:55px;'%>
+                        <%= image_tag "pierre#{rand(1..9)}.jpg", class: "avatar1 mr-3", style: 'height: 55px; width:55px;'%>
                       </div>
                       <div>
                         <p class='name m-0'><%= order.renter.first_name %> <%= order.renter.last_name %></p>

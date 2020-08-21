@@ -7,7 +7,7 @@
       <div class='d-flex align-items-end' style="width:100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @rocket.photo.key %>')">
         <div class='mx-5 my-3 text-white'>
           <h1 class='title-text'><strong><%= @rocket.name %></strong></h1>
-          <p class='subtitle-text'>Launch form <%= @rocket.city %>, <%= @rocket.country %> <%= @rocket.flag %></p>
+          <p class='subtitle-text'>Launch form <%= @rocket.city %>, <%= @rocket.country %></p>
         </div>
       </div>
     </div>
@@ -17,7 +17,8 @@
     </div>
   </div>
 
-  <div class="col-12 col-md-6 p-3">
+
+  <div class="col-12 col-md-6 p-3" style='max-height: 90vh; overflow: scroll;'>
 
     <div class="card p-3 m-3">
       <div class='row'>
@@ -48,6 +49,14 @@
       <div class='d-flex justify-content-between align-items-center m-3'>
         <div class='m-0 p-0'>
           <h4>A unique rocket!</h4>
+          <div>
+            <p class='m-0'>
+              <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
+              <%= @rocket.beds_number %> <%= @rocket.beds_number == 1 ? 'bed' : 'beds' %> ·
+              <%= @rocket.rooms_number %> <%= @rocket.rooms_number == 1 ? 'room' : 'rooms' %> ·
+              <%= @rocket.bathrooms_number %> <%= @rocket.bathrooms_number == 1 ? 'bathroom' : 'bathrooms' %>
+            </p>
+          </div>
           <p>
 
           <div class="stars">
@@ -68,24 +77,17 @@
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
+              <a class='ml-3' href="#">Add a review</a>
             <p>No review for this rocket</p>
 
             <% end %>
           </div>
-          <a href="#">Add a review</a>
-          </p>
 
-          <div>
-            <p class='m-0'>
-              <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
-              <%= @rocket.beds_number %> <%= @rocket.beds_number == 1 ? 'bed' : 'beds' %> ·
-              <%= @rocket.rooms_number %> <%= @rocket.rooms_number == 1 ? 'room' : 'rooms' %> ·
-              <%= @rocket.bathrooms_number %> <%= @rocket.bathrooms_number == 1 ? 'bathroom' : 'bathrooms' %>
-            </p>
-          </div>
+
+
         </div>
         <div>
-          <%= @rocket.owner.first_name %><%= image_tag "pierre.jpg", class: "avatar1 mx-3" %>
+          <%= @rocket.owner.first_name %><%= image_tag "pierre#{rand(1..9)}.jpg", class: "avatar1 mx-3" %>
         </div>
       </div>
 
@@ -107,24 +109,25 @@
       </div>
 
       <div class='p-3'>
-        <p class='m-0'>Nous avons eu un véritable coup de cœur pour cet appartement vue sur l'île de Nantes et son éléphant. Idéal pour visiter Nantes au calme en regardant passer les bateaux, vous êtes les bienvenus. Ancien appartement Nantais rénové en pierre.</p>
+        <p class='m-0'>Bienvenus dans notre fusée tout fraichement rénovée ! D'un confort inégalable, elle offre un cadre idéal pour visiter les contrées les plus lointaines de l'espace en regardant passer les étoiles filantes... Bon voyage interstellaire !</p>
       </div>
+
     </div>
-    <div class="card p-3 m-3">
-      <% @reviews.each do |review| %>
-      <div>
-        <% review.rating.to_i.times do  %>
-          <span class="fa fa-star checked"></span>
-        <% end %>
-        <% other_stars_number = 5 - review.rating.to_i %>
-        <% other_stars_number.times do  %>
-          <span class="fa fa-star"></span>
+      <div class="card p-3 m-3">
+        <% @reviews.each do |review| %>
+        <div>
+          <% review.rating.to_i.times do  %>
+            <span class="fa fa-star checked"></span>
+          <% end %>
+          <% other_stars_number = 5 - review.rating.to_i %>
+          <% other_stars_number.times do  %>
+            <span class="fa fa-star"></span>
+          <% end %>
+        </div>
+          <p><%= review.description %></p>
+          <br>
         <% end %>
       </div>
-        <p><%= review.description %></p>
-        <br>
-      <% end %>
-    </div>
 
 </div>
 
