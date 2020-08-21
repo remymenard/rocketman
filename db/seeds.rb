@@ -8,14 +8,14 @@
 require "open-uri"
 require "csv"
 
-puts "[1/4] Cleaning database..."
+puts "[1/5] Cleaning database..."
 Review.delete_all
 Order.delete_all
 Rocket.delete_all
 User.delete_all
-puts "[1/4] Finished!"
+puts "[1/5] Finished!"
 
-puts "[2/4] Creating 10 fake users..."
+puts "[2/5] Creating 10 fake users..."
 
 user = User.create!(first_name: "Jean Michel",
   last_name: "Dupont",
@@ -38,31 +38,31 @@ user = User.create!(first_name: "Jean Michel",
   user.save!
 end
 
-puts "[2/4] Finished!"
+puts "[2/5] Finished!"
 
-puts "[3/4] Creating fake rockets from the csv..."
+puts "[3/5] Creating fake rockets from the csv..."
 
-equipments = ['Wifi', 'Fitness room', 'Cinema', 'Jacuzzi', 'Spa', 'Booling', 'Golf court', 'Observatory', 'Horse riding', "Cocktail's bar", 'Skiing', 'Head cook']
+equipment = ['Wifi', 'Fitness room', 'Cinema', 'Jacuzzi', 'Spa', 'Booling', 'Golf court', 'Observatory', 'Horse riding', "Cocktail's bar", 'Skiing', 'Head cook']
 
 i = 1
 cities = CSV.parse(File.read(Rails.root.join("lib/cities.csv")))
+
 CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
                       name: Faker::Space.galaxy,
-                      autonomy: rand(1..1000000),
                       address: cities[i].first,
                       rooms_number: rand(1..10),
                       beds_number: rand(1..10),
                       bathrooms_number: rand(1..10),
                       travellers_number: rand(1..10),
-                      surface: rand(40..200))
-                      equipments: equipments.sample(rand(4..6))
-  sleep 0.5
+                      equipments: equipment.sample(rand(4..6)))
+  # sleep 0.5
   image = URI.open(row[0])
   rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
   i += 1
+  puts "#{i}/56"
 end
 
 
@@ -72,9 +72,9 @@ end
 # rocket.photo.attach(io: image, filename: "rocket.jpg", content_type: "image/jpg")
 # puts rocket.photo.attached?
 
-puts "[3/4] Finished!"
+puts "[3/5] Finished!"
 
-puts "[4/4] Creating some fake reviews..."
+puts "[4/5] Creating some fake reviews..."
 
 Rocket.all.each do |rocket|
   rand(3..6).times do
@@ -87,9 +87,9 @@ Rocket.all.each do |rocket|
 end
 
 
-puts "[3/4] Finished!"
+puts "[3/5] Finished!"
 
-puts "[4/4] Creating 20 fake orders..."
+puts "[5/5] Creating 20 fake orders..."
 20.times do
   begin_date = Faker::Date.between(from: 40.days.ago, to: -30.days.ago)
   days = rand(4..10)
@@ -102,4 +102,4 @@ puts "[4/4] Creating 20 fake orders..."
   order.total_price = days * order.rocket.daily_price
   order.save!
 end
-puts "[4/4] Finished!"
+puts "[5/5] Finished!"
