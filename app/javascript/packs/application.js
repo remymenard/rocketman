@@ -29,6 +29,7 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
