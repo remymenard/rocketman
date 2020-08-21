@@ -21,13 +21,10 @@
 
       <%= f.input :daily_price %>
 
-      <%= f.input :autonomy %>
-
       <%= f.input :rooms_number %>
       <%= f.input :beds_number %>
       <%= f.input :bathrooms_number %>
       <%= f.input :travellers_number %>
-      <%= f.input :surface %>
       <%= f.input :equipments, as: :check_boxes, collection: Rocket::EQUIPMENT, prompt: "Equipments", wrapper: :horizontal_collection_inline %>
 
       <%= f.input :address, wrapper_html: { id: 'addressJs'} %>
