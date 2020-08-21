@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <% if action_name == "home" %> navbar-home <% else %> navbar-allpages <% end %>">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <% if action_name == "home" %> navbar-home <% else %> navbar-allpages <% end %>" <% if action_name == "index" || action_name == "show"%> style="position: sticky; top: 0px; z-index: 1;" <% else %> style='z-index: 1;' <% end %>>
   <%= link_to homepage_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>

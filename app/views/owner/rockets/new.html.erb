@@ -1,7 +1,8 @@
+<%= render 'shared/background' %>
 
 <div class="container">
-  <h1 class= "pt-3 pb-3">Add a new rocket</h1>
-  <div class='card p-3'>
+  <h1 class= "pt-3 pb-3 text-white">Add a new rocket</h1>
+  <div class='card p-3 mb-5'>
     <%= simple_form_for @rocket, url: owner_rockets_path,
       wrapper: :horizontal_form,
       wrapper_mappings: {
@@ -27,13 +28,15 @@
       <%= f.input :bathrooms_number %>
       <%= f.input :travellers_number %>
       <%= f.input :surface %>
+      <%= f.input :equipments, as: :check_boxes, collection: Rocket::EQUIPMENT, prompt: "Equipments", wrapper: :horizontal_collection_inline %>
 
       <%= f.input :address, wrapper_html: { id: 'addressJs'} %>
       <p id="addressText">Your detected address: </p>
 
       <%= f.input :photo, as: :file %>
-
-      <%= f.button :submit, class: 'btn btn-light', style: 'width: 100%' %>
+      <div class='text-center'>
+        <%= f.button :submit, class: 'btn btn-outline-success btn-lg' %>
+      </div>
     <% end %>
   </div>
 

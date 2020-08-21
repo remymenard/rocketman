@@ -1,7 +1,8 @@
 require 'opencage/geocoder'
 
 class Rocket < ApplicationRecord
-CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
+  CONTINENT = ['Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
+  EQUIPMENT = ['Wifi', 'Fitness room', 'Cinema', 'Jacuzzi', 'Spa', 'Booling', 'Golf court', 'Observatory', 'Horse riding', "Cocktail's bar", 'Skiing', 'Head cook']
 
   has_one_attached :photo
   belongs_to :owner, class_name: 'User'

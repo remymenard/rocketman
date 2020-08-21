@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_100857) do
     t.string "country"
     t.string "city"
     t.string "flag"
+    t.jsonb "equipments", default: [], array: true
     t.index ["owner_id"], name: "index_rockets_on_owner_id"
   end
 
