@@ -27,6 +27,7 @@
       <%= f.input :bathrooms_number %>
       <%= f.input :travellers_number %>
       <%= f.input :surface %>
+      <%= f.input :equipments, as: :check_boxes, collection: Rocket::EQUIPMENT, prompt: "Equipments", wrapper: :horizontal_collection_inline %>
 
       <%= f.input :address, wrapper_html: { id: 'addressJs'} %>
       <p id="addressText">Your detected address: </p>

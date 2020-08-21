@@ -20,6 +20,6 @@ class Owner::RocketsController < ApplicationController
   private
 
   def rocket_params
-    params.require(:rocket).permit(:name, :daily_price, :autonomy, :photo, :address, :rooms_number, :beds_number, :bathrooms_number, :travellers_number, :surface)
+    params.require(:rocket).permit(:name, :daily_price, :autonomy, :photo, :address, :rooms_number, :beds_number, :bathrooms_number, :travellers_number, :surface, equipments:[])
   end
 end
