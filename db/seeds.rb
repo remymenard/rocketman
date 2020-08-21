@@ -22,34 +22,47 @@ user = User.create!(first_name: "Jean Michel",
   email: "test@exemple.com",
   password: "password")
 
-9.times do
+10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   user = User.new(first_name: first_name,
                   last_name: last_name,
                   email: "#{first_name.downcase}.#{last_name.downcase}@exemple.com",
                   password: "password")
+
+  cities = CSV.parse(File.read(Rails.root.join("lib/avatar.csv")))
+  CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
+    user.picture = row[0]
+  end
+
   user.save!
 end
+
 puts "[2/4] Finished!"
 
 puts "[3/4] Creating fake rockets from the csv..."
+
+equipments = ['Wifi', 'Fitness room', 'Cinema', 'Jacuzzi', 'Spa', 'Booling', 'Golf court', 'Observatory', 'Horse riding', "Cocktail's bar", 'Skiing', 'Head cook']
+
+i = 1
 cities = CSV.parse(File.read(Rails.root.join("lib/cities.csv")))
 CSV.foreach(Rails.root.join("lib/rockets.csv")) do |row|
   rocket = Rocket.new(owner: User.all.sample,
                       daily_price: rand(100..999),
-                      name: row[1],
+                      name: Faker::Space.galaxy,
                       autonomy: rand(1..1000000),
-                      address: cities.sample.first,
+                      address: cities[i].first,
                       rooms_number: rand(1..10),
                       beds_number: rand(1..10),
                       bathrooms_number: rand(1..10),
                       travellers_number: rand(1..10),
                       surface: rand(40..200))
+                      equipments: equipments.sample(rand(4..6))
   sleep 0.5
   image = URI.open(row[0])
   rocket.photo.attach(io: image, filename: "rocket#{$.}.jpg", content_type: "image/jpg")
   rocket.save!
+  i += 1
 end
 
 
@@ -61,16 +74,31 @@ end
 
 puts "[3/4] Finished!"
 
+puts "[4/4] Creating some fake reviews..."
+
+Rocket.all.each do |rocket|
+  rand(3..6).times do
+    review = Review.new(user: User.all.sample,
+                        rocket: rocket,
+                        rating: rand(2..5),
+                        description: Faker::Restaurant.review)
+    review.save!
+  end
+end
+
+
+puts "[3/4] Finished!"
+
 puts "[4/4] Creating 20 fake orders..."
 20.times do
-  begin_date = Faker::Date.between(from: 100.days.ago, to: 20.days.ago)
-  days = rand(1..19)
+  begin_date = Faker::Date.between(from: 40.days.ago, to: -30.days.ago)
+  days = rand(4..10)
   end_date = begin_date + days
   order = Order.new(rocket: Rocket.all.sample,
                     renter: User.all.sample,
                     begin_date: begin_date,
-                    end_date: end_date,
-                    total_price: rand(1..100000))
+                    end_date: end_date)
+
   order.total_price = days * order.rocket.daily_price
   order.save!
 end
