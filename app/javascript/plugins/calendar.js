@@ -15,4 +15,4 @@ function loadCalendar() {
 // calendarEl.fullCalendar('delete')
 }
 
-export { loadCalendar };
+

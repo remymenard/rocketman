@@ -25,7 +25,8 @@ require("turbolinks").start()
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr"
-import { loadCalendar } from "../plugins/calendar"
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 // Internal imports, e.g:
@@ -34,5 +35,18 @@ import { loadCalendar } from "../plugins/calendar"
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  loadCalendar();
+
+function loadCalendar() {
+  const calendarEl = document.getElementById('calendar');
+  if (calendarEl != null) {
+  let calendar = new Calendar(calendarEl, {
+    events: '/owner/orders/index_json',
+    height: 650,
+    plugins: [ dayGridPlugin ],
+    initialView: 'dayGridMonth'
+  });
+  calendar.render();
+}
+// calendarEl.fullCalendar('delete')
+}
 });
