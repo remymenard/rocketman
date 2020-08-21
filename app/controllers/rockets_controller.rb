@@ -9,7 +9,6 @@ class RocketsController < ApplicationController
   # end
 
   def index
-
     @params = search_params
 
     if !@params[:continent].empty?
