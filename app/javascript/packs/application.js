@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
-function loadCalendar() {
+
   const calendarEl = document.getElementById('calendar');
   if (calendarEl != null) {
   let calendar = new Calendar(calendarEl, {
@@ -48,5 +48,4 @@ function loadCalendar() {
   calendar.render();
 }
 // calendarEl.fullCalendar('delete')
-}
 });
