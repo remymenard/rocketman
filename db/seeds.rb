@@ -9,6 +9,7 @@ require "open-uri"
 require "csv"
 
 puts "[1/4] Cleaning database..."
+Review.delete_all
 Order.delete_all
 Rocket.delete_all
 User.delete_all
