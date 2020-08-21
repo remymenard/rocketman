@@ -1,20 +1,20 @@
 <%= render 'shared/background' %>
 
-  <div class='row ml-3'>
+  <div class='row mx-3'>
 
     <div class='col-7 p-0'>
       <!-- TITLE -->
-      <div class='mx-auto w-100 text-center' style='height: 120px; position: sticky; top: 65px; background-color: #F4F4F4; z-index: 1;'>
-        <h1 class='pt-5 pb-3 m-0'>My Rockets Requests</h1>
+      <div class='mx-auto w-100 text-center' style='height: 120px; position: sticky; top: 65px; z-index: 1;'>
+        <h1 class='pt-3 pb-3 m-0 text-white'>My Rockets Requests</h1>
       </div>
 
-      <div class='p'>
+      <div class='p' style='max-height: 75vh; overflow: scroll;'>
         <% @orders.each do |order| %>
           <!-- ORDER CARD -->
-          <div class='card mx-auto my-3 container order-card' style='height: 200px; width: 90%;'>
+          <div class='card border-0 mx-auto my-3 container order-card' style='height: 200px; width: 90%;'>
             <div class='row h-100'>
               <!-- PICTURE PART -->
-              <div class="card-category col-3" style="height: 100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path order.rocket.photo.key, height: 300, width: 400, crop: :fill %>')">
+              <div class="card-category col-3 rounded-left" style="height: 100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path order.rocket.photo.key, height: 300, width: 400, crop: :fill %>')">
                 <h2 style='font-weight: lighter;'><%= order.rocket.name %></h2>
               </div>
               <!-- CONTENT PART -->
@@ -78,7 +78,7 @@
     </div>
 
     <!-- CALENDAR PART -->
-    <div class='col-5 p-3 pr-5 border-left' style='background-color: white;'>
+    <div class='col-5 px-3 pt-0 pb-4 card my-3' style='background-color: white;'>
       <div id='calendar' class="margin-calendar" style="position: sticky; top: 110px;"></div>
     </div>
 
