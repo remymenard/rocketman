@@ -7,7 +7,7 @@ class Owner::OrdersController < ApplicationController
     update_status('Declined')
   end
 
-  def list
+  def index_json
     @orders = current_user.owner_orders.order(created_at: :asc)
     @formatted_orders = @orders.map{ |order|
       {
