@@ -4,14 +4,14 @@
 
     <div class='col-7 p-0'>
       <!-- TITLE -->
-      <div class='mx-auto w-100 text-center' style='height: 120px; position: sticky; top: 65px; background-color: #F4F4F4;'>
+      <div class='mx-auto w-100 text-center' style='height: 120px; position: sticky; top: 65px; background-color: #F4F4F4; z-index: 1;'>
         <h1 class='pt-5 pb-3 m-0'>My Rockets Requests</h1>
       </div>
 
       <div class='p'>
         <% @orders.each do |order| %>
           <!-- ORDER CARD -->
-          <div class='card mx-auto my-3 container order-card' style='height: 200px; width: 90%; z-index: -1;'>
+          <div class='card mx-auto my-3 container order-card' style='height: 200px; width: 90%;'>
             <div class='row h-100'>
               <!-- PICTURE PART -->
               <div class="card-category col-3" style="height: 100%; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path order.rocket.photo.key, height: 300, width: 400, crop: :fill %>')">
