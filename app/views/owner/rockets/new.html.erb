@@ -2,7 +2,18 @@
 <div class="container">
   <h1 class= "pt-3 pb-3">Add a new rocket</h1>
   <div class='card p-3'>
-    <%= simple_form_for @rocket, url: owner_rockets_path do |f| %>
+    <%= simple_form_for @rocket, url: owner_rockets_path,
+      wrapper: :horizontal_form,
+      wrapper_mappings: {
+        boolean:       :horizontal_boolean,
+        check_boxes:   :horizontal_collection,
+        date:          :horizontal_multi_select,
+        datetime:      :horizontal_multi_select,
+        file:          :horizontal_file,
+        radio_buttons: :horizontal_collection,
+        range:         :horizontal_range,
+        time:          :horizontal_multi_select
+      }  do |f| %>
       <%= f.error_notification %>
 
       <%= f.input :name %>
@@ -11,7 +22,7 @@
 
       <%= f.input :autonomy %>
 
-      <%= f.input :rooms_number, wrapper_html: { class: 'form-label-group' } %>
+      <%= f.input :rooms_number %>
       <%= f.input :beds_number %>
       <%= f.input :bathrooms_number %>
       <%= f.input :travellers_number %>
