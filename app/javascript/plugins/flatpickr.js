@@ -1,4 +1,7 @@
 import flatpickr from "flatpickr";
 document.addEventListener('turbolinks:load', function() {
-  flatpickr(".datepicker", {});
+  const pickers = document.querySelectorAll(".datepicker")
+  if(pickers != null) {
+    flatpickr(".datepicker", {});
+  }
 });
