@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_112026) do
+ActiveRecord::Schema.define(version: 2020_08_21_100857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_08_20_112026) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["renter_id"], name: "index_orders_on_renter_id"
     t.index ["rocket_id"], name: "index_orders_on_rocket_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "rocket_id", null: false
+    t.bigint "rating"
+    t.string "description"
+    t.index ["rocket_id"], name: "index_reviews_on_rocket_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rockets", force: :cascade do |t|
@@ -88,5 +97,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_112026) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "orders", "rockets"
   add_foreign_key "orders", "users", column: "renter_id"
+  add_foreign_key "reviews", "rockets"
+  add_foreign_key "reviews", "users"
   add_foreign_key "rockets", "users", column: "owner_id"
 end
