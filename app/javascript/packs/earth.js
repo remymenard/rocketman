@@ -9,9 +9,29 @@ function eventWindowLoaded() {
   // Add some image layers to the WorldWindow's globe.
   wwd.addLayer(new WorldWind.BMNGOneImageLayer());
   wwd.addLayer(new WorldWind.BMNGLandsatLayer());
-  let location = new WorldWind.Location(47.317520, -2.188230);
+
+  const continents = {
+    Africa: new WorldWind.Location(-4.21494314, 23.90625),
+    Antarctica: new WorldWind.Location(-84.22034234, 73.05358887),
+    Asia: new WorldWind.Location(35.46066995, 81.5625),
+    Europe: new WorldWind.Location(48.92249926, 382.5),
+    "North America": new WorldWind.Location(39.23225314, -98.96484375),
+    Oceania: new WorldWind.Location(-27.1080338, 493.60473633),
+    "South America": new WorldWind.Location(-21.99398856, 302.35473633)
+  }
+  const location = new WorldWind.Location(47.317520, -2.188230);
+
+  const htmlContinent = document.querySelector('.continent');
+  console.log(htmlContinent)
+  const continent = htmlContinent.dataset.continent
+  console.log(continent)
+  try {
+    wwd.goTo(continents[continent])
+  } catch (error) {
+    wwd.goTo(location)
+  }
   // Go to the posiion
-  wwd.goTo(location);
+  // wwd.goTo(continents.);
 
   let cards = document.querySelectorAll(".rocket-card");
 
