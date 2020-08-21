@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_100857) do
+ActiveRecord::Schema.define(version: 2020_08_21_122443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_08_21_100857) do
   create_table "rockets", force: :cascade do |t|
     t.integer "daily_price"
     t.string "name"
-    t.integer "autonomy"
     t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,10 +72,8 @@ ActiveRecord::Schema.define(version: 2020_08_21_100857) do
     t.integer "beds_number"
     t.integer "bathrooms_number"
     t.integer "travellers_number"
-    t.integer "surface"
     t.string "country"
     t.string "city"
-    t.string "flag"
     t.jsonb "equipments", default: [], array: true
     t.index ["owner_id"], name: "index_rockets_on_owner_id"
   end
@@ -91,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_100857) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "picture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
