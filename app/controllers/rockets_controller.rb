@@ -10,7 +10,7 @@ class RocketsController < ApplicationController
 
   def index
     @params = search_params
-
+    @continent = @params[:continent]
     if !@params[:continent].empty?
       @rockets_init = Rocket.where(continent: @params[:continent])
     else
