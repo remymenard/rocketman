@@ -49,7 +49,7 @@
                   <% if order.status == 'Pending' %>
                   <!-- ACCEPT & DECLINE BUTTONS -->
                     <div class='d-flex flex-column'>
-                      <%= link_to accept_owner_order_path(order), method: 'patch' do%>
+                      <%= link_to accept_owner_order_path(order, data: { turbolinks: false }), method: 'patch' do%>
                         <button type="button" class="btn btn-success mb-2" style='width: 90px;'>Accept</button>
                       <% end %>
                       <%= link_to decline_owner_order_path(order), method: 'patch' do%>
