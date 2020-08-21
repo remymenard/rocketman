@@ -48,6 +48,23 @@
       <div class='d-flex justify-content-between align-items-center m-3'>
         <div class='m-0 p-0'>
           <h4>A unique rocket!</h4>
+          <p>
+
+          <div class="stars">
+            <% average = 0
+            total = @reviews.each { |review| average += review.rating }
+            average = average / @reviews.size %>
+            <% average.to_i.times do  %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+            <% other_stars_number = 5 - average.to_i %>
+            <% other_stars_number.times do  %>
+              <span class="fa fa-star"></span>
+            <% end %>
+          </div>
+          <a href="#">Add a review</a>
+          </p>
+
           <div>
             <p class='m-0'>
               <%= @rocket.travellers_number %> <%= @rocket.travellers_number == 1 ? 'traveller' : 'travellers' %> ·
@@ -82,6 +99,21 @@
       <div class='p-3'>
         <p class='m-0'>Nous avons eu un véritable coup de cœur pour cet appartement vue sur l'île de Nantes et son éléphant. Idéal pour visiter Nantes au calme en regardant passer les bateaux, vous êtes les bienvenus. Ancien appartement Nantais rénové en pierre.</p>
       </div>
+    </div>
+    <div class="card p-3 m-3">
+      <% @reviews.each do |review| %>
+      <div>
+        <% review.rating.to_i.times do  %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% other_stars_number = 5 - review.rating.to_i %>
+        <% other_stars_number.times do  %>
+          <span class="fa fa-star"></span>
+        <% end %>
+      </div>
+        <p><%= review.description %></p>
+        <br>
+      <% end %>
     </div>
 
 </div>
