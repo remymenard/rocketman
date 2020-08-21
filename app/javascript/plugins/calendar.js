@@ -1,11 +1,11 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
+document.addEventListener('turbolinks:load', function() {
+  const calendarEl = document.getElementById('calendar');
 
-  var calendar = new Calendar(calendarEl, {
-    events: '/owner/orders/list',
+  const calendar = new Calendar(calendarEl, {
+    events: '/owner/orders/index_json',
     height: 650,
     plugins: [ dayGridPlugin ],
   initialView: 'dayGridMonth'

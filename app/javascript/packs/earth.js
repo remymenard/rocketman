@@ -1,5 +1,6 @@
+
 // Register an event listener to be called when the page is loaded.
-window.addEventListener("load", eventWindowLoaded, false);
+window.addEventListener("turbolinks:load", eventWindowLoaded, false);
 
 // Define the event listener to initialize Web WorldWind.
 function eventWindowLoaded() {
