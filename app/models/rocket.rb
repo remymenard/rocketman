@@ -18,7 +18,6 @@ class Rocket < ApplicationRecord
   validates :beds_number, presence: true, numericality: { only_integer: true }
   validates :bathrooms_number, presence: true, numericality: { only_integer: true }
   validates :travellers_number, presence: true, numericality: { only_integer: true }
-  validates :surface, presence: true, numericality: { only_integer: true }
 
   validates :owner, presence: true
 
@@ -26,7 +25,6 @@ class Rocket < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
   validates :address, presence: true, allow_blank: false
-  validates :autonomy, presence: true, allow_blank: false
 
   private
   def manage_location
