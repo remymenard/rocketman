@@ -1,6 +1,7 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
+document.addEventListener('turbolinks:load', loadCalendar);
 function loadCalendar() {
   const calendarEl = document.getElementById('calendar');
   if (calendarEl != null) {
@@ -14,5 +15,3 @@ function loadCalendar() {
 }
 // calendarEl.fullCalendar('delete')
 }
-
-
