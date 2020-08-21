@@ -1,27 +1,37 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-<%= render 'shared/background' %>
+<%= render 'shared/background' do %>
+<%= content_tag :div, class: "continent", data: {continent: @continent} do %>
+<% end %>
 <div class="container">
-  <h1 class="title-index pb-3 pt-3" style="color: white;"><strong>My Rockets</strong></h1>
+  <div class='row d-flex justify-content-between my-3'>
+    <h1 class='text-white'>My Rockets</h1>
+    <div>
+      <%= link_to new_owner_rocket_path do %>
+        <button type="button" class="btn btn-light">Add a new Rocket!</button>
+      <% end %>
+    </div>
+    </div>
   <div class="row">
     <div class="col-5" style="max-height: 75vh; overflow: scroll;">
       <% @rockets.each do |rocket| %>
-          <div class="rocket-card mt-3 mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
-            <div class="card-description text-left pl-4 d-flex flex-column mt-auto mb-3">
-              <div class="rocket-card-title pt-3">
-                <h4 style = "color: white"><%= rocket.name %></h4>
+          <div class="rocket-card mt-3 mb-3" data-longitude="<%= rocket.longitude %>" data-latitude="<%= rocket.latitude %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rocket.photo.key %>')">
+            <div class="card-category card-description d-flex flex-column mt-auto mb-3">
+              <div class="rocket-card-title  text-align-center pt-3">
+                <h1 style = "color: white"><%= rocket.name %></h1>
               </div>
-              <p style = "color: white"><%= rocket.address %></p>
-              <div class="flex pb-3">
+              <div class="flex text-align-center pb-3">
+                <h6 style = "color: white"><%= rocket.city %>, <%= rocket.country %></h6>
               </div>
             </div>
-            <%= link_to 'More info', rocket_path(rocket), class: "card-link"%>
+            <%= link_to 'More info', rocket_path(rocket), target: :_blank, class: "card-link"%>
           </div>
 
       <% end %>
     </div>
-    <div class="col-7">
-      <%= render 'shared/earth' %>
+    <div class="col-7" style="position: sticky; right: 100px;">
+        <%= render 'shared/earth' %>
     </div>
+
   </div>
 </div>
+<% end %>
 
